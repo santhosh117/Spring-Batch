@@ -9,7 +9,6 @@ import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -34,14 +33,14 @@ public class PersonReader implements ItemReader<Person> {
             personList = fetchPersonDataFromAPI();
         }
 
-        Person nextStudent = null;
+        Person nextPerson = null;
 
         if (nextPersonIndex < personList.size()) {
-            nextStudent = personList.get(nextPersonIndex);
+            nextPerson = personList.get(nextPersonIndex);
             nextPersonIndex++;
         }
 
-        return nextStudent;
+        return nextPerson;
     }
 
     private List<Person> fetchPersonDataFromAPI(){
@@ -51,7 +50,6 @@ public class PersonReader implements ItemReader<Person> {
                 apiUrl,
                 Person[].class
         );
-        Person[] studentData = response.getBody();
-        return Arrays.asList(studentData);
+        Person[] personData = response.getBody();
     }
 }
