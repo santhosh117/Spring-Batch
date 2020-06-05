@@ -51,5 +51,6 @@ public class PersonReader implements ItemReader<Person> {
                 Person[].class
         );
         Person[] personData = response.getBody();
+        return Arrays.asList(personData);
     }
 }
